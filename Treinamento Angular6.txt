@@ -1,0 +1,12 @@
+Angular 6
+
+- www.nodejs.org
+- Angular CLI =>
+		npm install -g @angular/cli
+- code.visualstudio.com
+- www.typescript.org
+		npm install -g typescript
+		tsc -v
+		tsc main.ts
+		node main
+		tsc --init   gera o tsconfig.json

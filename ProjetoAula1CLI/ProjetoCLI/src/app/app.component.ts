@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'PIC Angular';
+
+  pessoas: any[] = [
+    {
+      "nome":'Anderson Bellini',
+      "idade": 30
+    },
+    {
+      "nome":"Odair Viol",
+      "idade": 32
+    },
+    {
+      "nome":"Roberto Bob",
+      "idade": 38
+    }
+    ,{
+      "nome":"João Silva",
+      "idade": 40
+    }
+  ]
 }

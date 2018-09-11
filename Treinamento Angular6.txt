@@ -10,3 +10,4 @@ Angular 6
 		tsc main.ts
 		node main
 		tsc --init   gera o tsconfig.json
+

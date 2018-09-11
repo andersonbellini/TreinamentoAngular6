@@ -13,4 +13,3 @@ var Veiculo = /** @class */ (function () {
     return Veiculo;
 }());
 exports.Veiculo = Veiculo;
-//# sourceMappingURL=veiculo.js.map

@@ -33,4 +33,3 @@ var Carro = /** @class */ (function (_super) {
     return Carro;
 }(veiculo_1.Veiculo));
 exports.Carro = Carro;
-//# sourceMappingURL=carro.js.map

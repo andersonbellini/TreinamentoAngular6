@@ -31,4 +31,3 @@ var Moto = /** @class */ (function (_super) {
     return Moto;
 }(veiculo_1.Veiculo));
 exports.Moto = Moto;
-//# sourceMappingURL=moto.js.map

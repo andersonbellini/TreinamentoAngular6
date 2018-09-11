@@ -1,16 +1,24 @@
-import { Carro } from "./carro";
-import { Moto } from "./moto";
+import { variaveis } from './variaveis';
+// import { Carro } from "./carro";
+// import { Moto } from "./moto";
 
-let fusca  = new Carro(4,'azul','vw','Anderson');
+// let fusca  = new Carro(4,'azul','vw','Anderson');
 
-fusca.acelerar();
-fusca.desacelerar();
-fusca.alterarCorVeiculo();
+// fusca.acelerar();
+// fusca.desacelerar();
+// fusca.alterarCorVeiculo();
 
-const motinha = new Moto("Anderson", "Vermelha");
-motinha.acelerar();
-motinha.desacelerar();
-motinha.alterarCorVeiculo();
-console.log(motinha.obterMarca());
-motinha.desacelerar();
+// const motinha = new Moto("Anderson", "Vermelha");
+// motinha.acelerar();
+// motinha.desacelerar();
+// motinha.alterarCorVeiculo();
+// console.log(motinha.obterMarca());
+// motinha.desacelerar();
 
+let variavel = new variaveis();
+variavel.printVar();
+
+variavel.printLet();
+variavel.printConst();
+
+variavel.printAtributoClasse();

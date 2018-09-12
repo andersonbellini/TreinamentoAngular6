@@ -1,20 +1,36 @@
-
 <div style="text-align:center">
-    <h1>
-      Welcome to {{ title }}!
-    </h1>
-   </div>
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
 
-  <div *ngIf="pessoas.length >0">
-    <h2>Exemplo *ngFor / *ngIf</h2>
-    <ul *ngFor="let pessoa of pessoas">
-      <li *ngIf="pessoa.idade>35"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
-      <li *ngIf="pessoa.idade<=30"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
-    </ul>
+<div class="row">
+  <div class="col-sm-5">
+    <input class="form-control" type="text" placeholder="Digite o Nome da Pessoa" [(ngModel)]="nome">
   </div>
+</div>
+{{nome}}
+<br/>
+<div class="row">
+  <div class="col-sm-5">
+    <input class="form-control" type="number" placeholder="Digite a Idade" [(ngModel)]="idade">
+  </div>
+</div>
+<br/>
+<button type="button" class="btn btn-primary" (click)="adicionar()">Adicionar</button>
+<br/>
+<br/>
 
-   <h2>Exemplo *ngSwitch</h2>
-   <ul *ngFor="let pessoa of pessoas" [ngSwitch]="pessoa.idade">
+<div *ngIf="pessoas.length >0">
+  <h2>Exemplo *ngFor / *ngIf</h2>
+  <ul *ngFor="let pessoa of pessoas">
+    <li *ngIf="pessoa.idade>35"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
+    <li *ngIf="pessoa.idade<=30"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
+  </ul>
+
+
+  <h2>Exemplo *ngSwitch</h2>
+  <ul *ngFor="let pessoa of pessoas" [ngSwitch]="pessoa.idade">
     <li *ngSwitchCase="30"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
     <li *ngSwitchCase="32"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
   </ul>
@@ -22,15 +38,15 @@
   <h2>Exemplo *ngStyle</h2>
   <ul *ngFor="let pessoa of pessoas">
     <li>
-        <b [ngStyle]="{
+      <b [ngStyle]="{
           'color' :pessoa.idade == 30 ? 'green' :
           (pessoa.idade> 35 ? 'blue' : 'red') }">Nome:</b>
-          {{pessoa.nome}}
+      {{pessoa.nome}}
 
-          <b [ngStyle]="{
+      <b [ngStyle]="{
             'color' :pessoa.idade == 30 ? 'green' :
             (pessoa.idade> 35 ? 'blue' : 'red') }">Idade:</b>
-            {{pessoa.idade}}
+      {{pessoa.idade}}
     </li>
 
   </ul>
@@ -39,11 +55,13 @@
   <h2>Exemplo *ngClass</h2>
   <ul *ngFor="let pessoa of pessoas">
     <li>
-        <label [ngClass]="{'text-red' : pessoa.idade < 35,
+      <label [ngClass]="{'text-red' : pessoa.idade < 35,
                            'text-blue' : pessoa.idade == 30,
                            'text-green' : pessoa.idade > 35
                           }">
-                          <b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}
-        </label>
+        <b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}
+      </label>
     </li>
   </ul>
+
+</div>

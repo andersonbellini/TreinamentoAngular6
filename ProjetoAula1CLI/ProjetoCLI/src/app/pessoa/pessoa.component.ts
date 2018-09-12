@@ -12,14 +12,25 @@ export class PessoaComponent implements OnInit {
 
   title = 'PIC Angular';
 
+  nome : string;
+  idade: number;
+
   pessoas: Pessoa[] = [
-    new Pessoa("Anderson Bellini", 30),
-    new Pessoa("Odair Viol", 32),
-    new Pessoa("Roberto Bob", 38),
-    new Pessoa("João Silva", 40)
+    // new Pessoa("Anderson Bellini", 30),
+    // new Pessoa("Odair Viol", 32),
+    // new Pessoa("Roberto Bob", 38),
+    // new Pessoa("João Silva", 40)
   ]
 
   ngOnInit() {
+    this.nome="";
+    this.idade = null;
+  }
+
+  adicionar(){
+    this.pessoas.push(new Pessoa(this.nome,this.idade));
+    this.ngOnInit()
+    console.log("Nome: " + this.nome + " - " + "Idade: " + this.idade );
   }
 
 }

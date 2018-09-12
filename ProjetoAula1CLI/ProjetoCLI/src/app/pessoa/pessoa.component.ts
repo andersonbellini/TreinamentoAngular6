@@ -13,7 +13,8 @@ export class PessoaComponent implements OnInit {
   nome : string;
   idade: number;
   pessoa:Pessoa;
-  pessoas: Pessoa[] = [];
+ // pessoas: Pessoa[] = [];
+  pessoas: Array<Pessoa> = [];
 
   ngOnInit() {
     this.pessoa = new Pessoa("",null);

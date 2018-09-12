@@ -5,11 +5,13 @@
     </h1>
    </div>
 
-  <h2>Exemplo *ngFor / *ngIf</h2>
-  <ul *ngFor="let pessoa of pessoas">
-    <li *ngIf="pessoa.idade>35"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
-    <li *ngIf="pessoa.idade<=30"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
-  </ul>
+  <div *ngIf="pessoas.length >0">
+    <h2>Exemplo *ngFor / *ngIf</h2>
+    <ul *ngFor="let pessoa of pessoas">
+      <li *ngIf="pessoa.idade>35"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
+      <li *ngIf="pessoa.idade<=30"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
+    </ul>
+  </div>
 
    <h2>Exemplo *ngSwitch</h2>
    <ul *ngFor="let pessoa of pessoas" [ngSwitch]="pessoa.idade">

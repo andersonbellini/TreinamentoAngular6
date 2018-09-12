@@ -6,14 +6,14 @@
 
 <div class="row">
   <div class="col-sm-5">
-    <input class="form-control" type="text" placeholder="Digite o Nome da Pessoa" [(ngModel)]="nome">
+    <input class="form-control" type="text" placeholder="Digite o Nome da Pessoa" [(ngModel)]="pessoa.nome">
   </div>
 </div>
-{{nome}}
+{{pessoa.nome}}
 <br/>
 <div class="row">
   <div class="col-sm-5">
-    <input class="form-control" type="number" placeholder="Digite a Idade" [(ngModel)]="idade">
+    <input class="form-control" type="number" placeholder="Digite a Idade" [(ngModel)]="pessoa.idade">
   </div>
 </div>
 <br/>
@@ -21,11 +21,22 @@
 <br/>
 <br/>
 
-<div *ngIf="pessoas.length >0">
+<!-- container pode ser usado para esconder partials  -->
+<ng-container class="text-red" *ngIf="pessoas.length >0">
+
+    <h2>Exemplo *ngFor</h2>
+    <ul *ngFor="let pessoa of pessoas; let i = index">
+        <li *ngIf="pessoa.idade>=0"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}
+          <button type="button" class="btn btn-danger" (click)="excluirObjeto(pessoa)">Excluir</button>
+        </li>
+      </ul>
+
+
   <h2>Exemplo *ngFor / *ngIf</h2>
   <ul *ngFor="let pessoa of pessoas">
     <li *ngIf="pessoa.idade>35"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
     <li *ngIf="pessoa.idade<=30"><b>Nome:</b> {{pessoa.nome}} <b>Idade:</b> {{pessoa.idade}}</li>
+    <button type="button" class="btn btn-danger" (click)="excluirObjeto(pessoa)">Excluir</button>
   </ul>
 
 
@@ -64,4 +75,4 @@
     </li>
   </ul>
 
-</div>
+</ng-container>

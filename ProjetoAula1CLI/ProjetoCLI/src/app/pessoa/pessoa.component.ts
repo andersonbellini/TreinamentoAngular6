@@ -7,30 +7,35 @@ import { Pessoa } from '../pessoa';
   styleUrls: ['./pessoa.component.css']
 })
 export class PessoaComponent implements OnInit {
-
   constructor() { }
 
   title = 'PIC Angular';
-
   nome : string;
   idade: number;
-
-  pessoas: Pessoa[] = [
-    // new Pessoa("Anderson Bellini", 30),
-    // new Pessoa("Odair Viol", 32),
-    // new Pessoa("Roberto Bob", 38),
-    // new Pessoa("João Silva", 40)
-  ]
+  pessoa:Pessoa;
+  pessoas: Pessoa[] = [];
 
   ngOnInit() {
-    this.nome="";
-    this.idade = null;
+    this.pessoa = new Pessoa("",null);
   }
 
   adicionar(){
-    this.pessoas.push(new Pessoa(this.nome,this.idade));
-    this.ngOnInit()
-    console.log("Nome: " + this.nome + " - " + "Idade: " + this.idade );
+    this.pessoas.push(this.pessoa);
+    this.ngOnInit();
+    console.log(this.pessoa);
+  }
+
+  excluirObjeto(pessoa: Pessoa) : void{
+    let index = this.pessoas.indexOf(pessoa);
+    this.pessoas.splice(index,1);
+    console.log("Removido: "+ pessoa.nome);
+
+  }
+
+  exlcuirPorIndex(index: number)
+  {
+    console.log(index)
+    this.pessoas.splice(index,1);
   }
 
 }

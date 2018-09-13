@@ -11,3 +11,6 @@ Angular 6
 		node main
 		tsc --init   gera o tsconfig.json
 
+
+Como passar valores entre Component:
+-> http://www.macoratti.net/17/07/ang2_pdtcomp1.htm

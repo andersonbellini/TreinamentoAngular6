@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { TipoAnuncioService } from './../../../services/tipo-anuncio.service';
 import { Component, OnInit } from '@angular/core';
 import { tipoAnuncio } from '../../../models/tipo-anuncio.model';
@@ -10,15 +11,16 @@ import { tipoAnuncio } from '../../../models/tipo-anuncio.model';
 })
 export class AnuncioConsultaComponent implements OnInit {
 
-    tiposAnuncio: tipoAnuncio[] = [];
+    tiposAnuncio: Observable<tipoAnuncio[]>;
 
   constructor(private tipoAnuncioService: TipoAnuncioService) { }
 
   ngOnInit() {
-    this.tipoAnuncioService.findAll().subscribe(resultado => {
-      this.tiposAnuncio = resultado;
-      console.log(resultado);
-    });
+    this.tiposAnuncio = this.tipoAnuncioService.findAll();
+    // this.tipoAnuncioService.findAll().subscribe(resultado => {
+    //   this.tiposAnuncio = resultado;
+    //   console.log(resultado);
+    // });
   }
 
 }

@@ -9,6 +9,8 @@ import { Pessoa } from '../pessoa';
 export class PessoaComponent implements OnInit {
   constructor() { }
 
+  nomeX: string = "InicialFilho";
+
   title = 'PIC Angular';
   nome : string;
   idade: number;

@@ -15,7 +15,10 @@ export class AnuncioConsultaComponent implements OnInit {
   constructor(private tipoAnuncioService: TipoAnuncioService) { }
 
   ngOnInit() {
-    //this.TipoAnuncioServiceoService.findAll();
+    this.tipoAnuncioService.findAll().subscribe(resultado => {
+      this.tiposAnuncio = resultado;
+      console.log(resultado);
+    });
   }
 
 }

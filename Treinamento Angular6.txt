@@ -14,3 +14,7 @@ Angular 6
 
 Como passar valores entre Component:
 -> http://www.macoratti.net/17/07/ang2_pdtcomp1.htm
+
+Iniciar Json Server
+
+cast-anuncios>json-server --watch bd-cast-anuncios.json

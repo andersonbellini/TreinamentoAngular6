@@ -1,4 +1,7 @@
+import { Observable } from 'rxjs';
+import { TipoAnuncioService } from './../../../services/tipo-anuncio.service';
 import { Component, OnInit } from '@angular/core';
+import { tipoAnuncio } from '../../../models/tipo-anuncio.model';
 
 @Component({
   selector: 'app-anuncio-cadastro',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnuncioCadastroComponent implements OnInit {
 
-  constructor() { }
+  tiposAnuncio: Observable<tipoAnuncio[]>;
+
+  constructor(private tipoAnuncioService: TipoAnuncioService) { }
 
   ngOnInit() {
+    this.tiposAnuncio = this.tipoAnuncioService.findAll();
   }
 
 }

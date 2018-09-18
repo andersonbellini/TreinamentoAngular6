@@ -16,5 +16,7 @@ Como passar valores entre Component:
 -> http://www.macoratti.net/17/07/ang2_pdtcomp1.htm
 
 Iniciar Json Server
+	cast-anuncios>json-server --watch bd-cast-anuncios.json
 
-cast-anuncios>json-server --watch bd-cast-anuncios.json
+Como usar o JsonServer
+https://code.tutsplus.com/pt/tutorials/fake-rest-api-up-and-running-using-json-server--cms-27871

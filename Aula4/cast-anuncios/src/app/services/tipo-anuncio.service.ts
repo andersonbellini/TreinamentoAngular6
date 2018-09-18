@@ -5,7 +5,6 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { tipoAnuncio } from '../models/tipo-anuncio.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +13,7 @@ export class TipoAnuncioService {
   private tipoAnuncioUrl: string;
 
   constructor(private http: HttpClient) {
-    this.tipoAnuncioUrl = `${environment.apiBaseUrl}/tipo-anuncio`;
+    this.tipoAnuncioUrl = `${environment.apiBaseUrl}/tipos`;
   }
 
   findAll(): Observable<tipoAnuncio[]>

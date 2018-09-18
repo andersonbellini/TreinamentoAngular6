@@ -1,7 +1,9 @@
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { TipoAnuncioService } from './../../../services/tipo-anuncio.service';
 import { Component, OnInit } from '@angular/core';
 import { tipoAnuncio } from '../../../models/tipo-anuncio.model';
+import { anuncio } from '../../../models/anuncio.model';
 
 @Component({
   selector: 'app-anuncio-consulta',
@@ -10,8 +12,10 @@ import { tipoAnuncio } from '../../../models/tipo-anuncio.model';
   providers: [TipoAnuncioService]
 })
 export class AnuncioConsultaComponent implements OnInit {
+    formulario: FormGroup;
 
     tiposAnuncio: Observable<tipoAnuncio[]>;
+    anuncio: Observable<anuncio>;
 
   constructor(private tipoAnuncioService: TipoAnuncioService) { }
 

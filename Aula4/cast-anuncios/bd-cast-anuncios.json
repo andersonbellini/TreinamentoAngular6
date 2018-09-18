@@ -1,5 +1,5 @@
 {
-  "tipo-anuncio" :[
+  "tipos" :[
     {
       "id": 1,
       "nome": "Veículos",
@@ -16,5 +16,6 @@
       "descricao": "Relógios, Celulares e Video Games"
     }
 
-  ]
+  ],
+  "anuncios":[]
 }

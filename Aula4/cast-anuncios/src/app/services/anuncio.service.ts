@@ -15,15 +15,20 @@ export class AnuncioService {
     this.anuncioUrl = `${environment.apiBaseUrl}/anuncios`;
   }
 
-  public insert(anuncio: anuncio): Observable<HttpResponse<anuncio>>{
-    console.log("Anuncio service: " + anuncio.nome);
-    let body = JSON.stringify(anuncio);
-    let httpReaders =
-         new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post<anuncio>(
-      this.anuncioUrl,
-      body, {headers: httpReaders, observe: 'response'});
-  }
+  //Insert de anúncios com método POST
+  // public insert(anuncio: anuncio): Observable<HttpResponse<anuncio>>{
+  //   console.log("Anuncio service: " + anuncio.nome);
+  //   let body = JSON.stringify(anuncio);
+  //   let httpReaders =
+  //        new HttpHeaders({'Content-Type': 'application/json'});
+  //   return this.http.post<anuncio>(
+  //     this.anuncioUrl,
+  //     body, {headers: httpReaders, observe: 'response'});
+  // }
 
+  public insert(anuncio: anuncio): Observable<Object>{
+    console.log("Anuncio service: " + anuncio.nome);
+    return this.http.post(this.anuncioUrl,anuncio);
+  }
 
 }

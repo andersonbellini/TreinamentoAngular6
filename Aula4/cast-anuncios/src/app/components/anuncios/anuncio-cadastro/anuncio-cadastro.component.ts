@@ -33,15 +33,32 @@ export class AnuncioCadastroComponent implements OnInit {
     this.tiposAnuncio = this.tipoAnuncioService.findAll();
   }
 
+  public campoValido(campo: string): boolean{
+    let formControl = this.formulario.get(campo);
+    if(campo.toLocaleUpperCase()=="TIPO")
+    {
+      return formControl.value=="null" && (formControl.touched || formControl.dirty);
+    }
+    else{
+      return formControl.invalid && (formControl.touched || formControl.dirty);
+    }
+  }
+
   public salvar(): void {
     console.log(this.formulario);
     console.log(this.formulario.value);
     console.log(this.anuncio);
 
+    if(this.formulario.valid){
     this.anuncioService.insert(this.anuncio).subscribe(resultado =>{
       this.anuncio = JSON.parse(JSON.stringify(this.formulario.value));
       alert("Anúncio Salvo " + resultado); //.body.id);
-     }
+     });
+    }
+    else {
+      alert("Formulário inválido, verifique os campos");
+    }
+
     //,
     // (err: HttpErrorResponse) => {
     //   console.log(err);
@@ -61,6 +78,6 @@ export class AnuncioCadastroComponent implements OnInit {
 
     // });
 
-
+    }
 
 }

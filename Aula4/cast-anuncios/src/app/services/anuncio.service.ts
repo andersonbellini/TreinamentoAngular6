@@ -27,7 +27,7 @@ export class AnuncioService {
   // }
 
   public insert(anuncio: anuncio): Observable<Object>{
-    console.log("Anuncio service: " + anuncio.nome);
+    console.log("Anuncio service: " + anuncio);
     return this.http.post(this.anuncioUrl,anuncio);
   }
 

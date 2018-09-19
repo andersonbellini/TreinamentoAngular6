@@ -13,7 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
 import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptors';
-
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptors';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CurrencyMaskModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

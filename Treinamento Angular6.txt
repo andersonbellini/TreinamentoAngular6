@@ -20,3 +20,6 @@ Iniciar Json Server
 
 Como usar o JsonServer
 https://code.tutsplus.com/pt/tutorials/fake-rest-api-up-and-running-using-json-server--cms-27871
+
+Valores monetários
+npm install ng2-currency-mask --save

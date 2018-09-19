@@ -60,7 +60,8 @@
             id="contato"
             class="form-control"
             type="text"
-            formControlName="contato">
+            formControlName="contato"
+            mask= "(99) 9?9999-9999">
             <div class="alert alert-danger" role="alert" *ngIf="campoValido('contato')">O Contato é obrigatório!</div>
         </div>
       </div>

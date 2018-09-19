@@ -23,3 +23,6 @@ https://code.tutsplus.com/pt/tutorials/fake-rest-api-up-and-running-using-json-s
 
 Valores monetários
 npm install ng2-currency-mask --save
+
+Máscara para os campos
+npm install --save ngx-mask

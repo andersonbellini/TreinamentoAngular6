@@ -14,6 +14,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 
 import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptors';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import {NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

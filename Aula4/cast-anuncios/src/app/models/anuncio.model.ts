@@ -1,3 +1,4 @@
+import { Imagem } from './imagem.model';
 export  class anuncio {
 
   constructor
@@ -8,6 +9,7 @@ export  class anuncio {
     public nome: string,
     public tipo: number,
     public valor: string,
+    public imagem: Imagem
     ){}
 
 

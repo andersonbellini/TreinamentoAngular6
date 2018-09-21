@@ -46,18 +46,22 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
+                <tr *ngFor="let a of anuncio" >
+                  <td>{{a.id}}</td>
+                  <td>{{a.tipo}}</td>
+                  <td>{{a.nome}}</td>
+                  <td>{{a.valor}}</td>
+                  <!-- <td>1</td>
                   <td>Veículos</td>
                   <td>Camaro Amarelo</td>
-                  <td>R$150.000,00</td>
+                  <td>R$150.000,00</td> -->
                   <td class="center">
                     <button type="submit" class="btn btn-secundary"><i class="fa fa-eye"></i>&nbsp;Visualizar</button>
                     &nbsp;
                     <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Alterar</button>
                     &nbsp;
                     <button type="submit" class="btn btn-danger"><i class="fa fa-remove"></i>&nbsp;Excluir</button>
-                  </td>
+                   </td>
                 </tr>
               </tbody>
             </table>

@@ -31,4 +31,8 @@ export class AnuncioService {
     return this.http.post(this.anuncioUrl,anuncio);
   }
 
+  public listarAnuncio(anuncio: anuncio): Observable<Object>{
+    return this.http.post(this.anuncioUrl,anuncio);
+  }
+
 }

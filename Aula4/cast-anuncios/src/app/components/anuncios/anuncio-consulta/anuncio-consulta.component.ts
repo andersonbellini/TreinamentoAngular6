@@ -1,3 +1,4 @@
+import { AnuncioService } from './../../../services/anuncio.service';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { TipoAnuncioService } from './../../../services/tipo-anuncio.service';
@@ -9,7 +10,7 @@ import { anuncio } from '../../../models/anuncio.model';
   selector: 'app-anuncio-consulta',
   templateUrl: './anuncio-consulta.component.html',
   styleUrls: ['./anuncio-consulta.component.css'],
-  providers: [TipoAnuncioService]
+  providers: [TipoAnuncioService,AnuncioService]
 })
 export class AnuncioConsultaComponent implements OnInit {
     formulario: FormGroup;
@@ -17,7 +18,7 @@ export class AnuncioConsultaComponent implements OnInit {
     tiposAnuncio: Observable<tipoAnuncio[]>;
     anuncio: Observable<anuncio>;
 
-  constructor(private tipoAnuncioService: TipoAnuncioService) { }
+  constructor(private tipoAnuncioService: TipoAnuncioService,private anuncioService: AnuncioService) { }
 
   ngOnInit() {
     this.tiposAnuncio = this.tipoAnuncioService.findAll();
@@ -25,7 +26,16 @@ export class AnuncioConsultaComponent implements OnInit {
     //   this.tiposAnuncio = resultado;
     //   console.log(resultado);
     // });
+
+    this.anuncioService.listarAnuncio().subscribe(resultado =>{
+      this.anuncio = JSON.parse(JSON.stringify(resultado));
+      alert("Foram encontrados  " + resultado.length + " anúncios");
+
+    });
+
   }
+
+
 
 }
 

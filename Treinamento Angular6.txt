@@ -26,3 +26,17 @@ npm install ng2-currency-mask --save
 
 Máscara para os campos
 npm install --save ngx-mask
+
+--Configurando o locale no projeto em app.module.ts:
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt, 'pt-BR');
+
+--colocar nos providers LOCALE_ID do core do angular:
+	
+	{ provide: LOCALE_ID, useValue: 'pt-BR' }
+
+
+--Paginação NGX Pagination:
+https://www.npmjs.com/package/ngx-pagination

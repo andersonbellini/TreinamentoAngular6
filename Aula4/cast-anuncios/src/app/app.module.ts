@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt, 'pt-BR');
 
 import { AppComponent } from './app.component';
 import { AnuncioConsultaComponent } from './components/anuncios/anuncio-consulta/anuncio-consulta.component';
@@ -39,7 +43,13 @@ import {NgxMaskModule} from 'ngx-mask';
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorHttpInterceptor,
     multi: true
-  }],
+  },
+  {
+    provide: LOCALE_ID,
+    useValue: 'pt-BR'
+   }
+
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -38,12 +38,15 @@ export class AnuncioService {
   //   return this.http.post(this.anuncioUrl,anuncio);
   // }
 
-  findbyFiltros(filtro: anuncioFiltro): Observable<anuncio[]> {
+  public findbyFiltros(filtro: anuncioFiltro): Observable<anuncio[]> {
     console.log(filtro);
-    if(filtro.tipo != null && filtro.nome != null){
+  if(filtro.tipo != "null" && filtro.nome != null){
         return this.http.get<anuncio[]>(this.anuncioUrl + "?tipo=" + filtro.tipo +"&nome_like=" + filtro.nome);
-    } else if(filtro.tipo!=null){
+  } else if(filtro.tipo!="null"){
       return this.http.get<anuncio[]>(this.anuncioUrl + "?tipo=" + filtro.tipo);
+    }
+    else{
+      return this.http.get<anuncio[]>(this.anuncioUrl + "?nome_like=" + filtro.nome);
     }
 
     return null;

@@ -5,7 +5,7 @@ export class anuncioFiltro {
   (
     public id: number,
     public nome: string,
-    public tipo: number,
+    public tipo: string,
     ){}
 
 }

@@ -1,5 +1,7 @@
+import { FilhoComponent } from './../../../../../../../Aula3/ciclo-vida/src/app/filho/filho.component';
+import { anuncioFiltro } from './../../../models/anuncio-filtro.model';
 import { AnuncioService } from './../../../services/anuncio.service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { TipoAnuncioService } from './../../../services/tipo-anuncio.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,11 +16,13 @@ import { anuncio } from '../../../models/anuncio.model';
 })
 export class AnuncioConsultaComponent implements OnInit {
     formulario: FormGroup;
-
     tiposAnuncio: Observable<tipoAnuncio[]>;
     anuncio: Observable<anuncio>;
+    filtro: anuncioFiltro;
 
-  constructor(private tipoAnuncioService: TipoAnuncioService,private anuncioService: AnuncioService) { }
+  constructor(private formBuilder: FormBuilder,
+    private tipoAnuncioService: TipoAnuncioService,
+    private anuncioService: AnuncioService) { }
 
   ngOnInit() {
     this.tiposAnuncio = this.tipoAnuncioService.findAll();
@@ -29,10 +33,23 @@ export class AnuncioConsultaComponent implements OnInit {
 
     this.anuncioService.listarAnuncio().subscribe(resultado =>{
       this.anuncio = JSON.parse(JSON.stringify(resultado));
-      alert("Foram encontrados  " + resultado.length + " anúncios");
+      //alert("Foram encontrados  " + resultado.length + " anúncios");
 
     });
 
+    this.createFormGroup();
+
+  }
+  createFormGroup(): void {
+    this.formulario = this.formBuilder.group({
+        tipo: [null],
+        nome: [null]
+    });
+  }
+
+  public pesquisar(): void {
+    this.filtro = JSON.parse(JSON.stringify(this.formulario.value));
+    this.anuncioService.findbyFiltros(this.filtro);
   }
 
 

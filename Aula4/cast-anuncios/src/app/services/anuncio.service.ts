@@ -1,3 +1,4 @@
+import { anuncioFiltro } from './../models/anuncio-filtro.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -8,6 +9,7 @@ import { anuncio } from '../models/anuncio.model';
   providedIn: 'root'
 })
 export class AnuncioService {
+
 
   private anuncioUrl: string;
 
@@ -36,9 +38,21 @@ export class AnuncioService {
   //   return this.http.post(this.anuncioUrl,anuncio);
   // }
 
+  findbyFiltros(filtro: anuncioFiltro): Observable<anuncio[]> {
+    console.log(filtro);
+    if(filtro.tipo != null && filtro.nome != null){
+        return this.http.get<anuncio[]>(this.anuncioUrl + "?tipo=" + filtro.tipo +"&nome_like=" + filtro.nome);
+    } else if(filtro.tipo!=null){
+      return this.http.get<anuncio[]>(this.anuncioUrl + "?tipo=" + filtro.tipo);
+    }
+
+    return null;
+  }
+
   public listarAnuncio(): Observable<anuncio[]>
   {
     return this.http.get<anuncio[]>(this.anuncioUrl);
   }
+
 
 }

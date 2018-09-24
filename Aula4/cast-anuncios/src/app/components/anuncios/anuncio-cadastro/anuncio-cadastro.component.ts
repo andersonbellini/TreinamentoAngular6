@@ -1,14 +1,13 @@
-import { Imagem } from './../../../models/imagem.model';
-
-import { Observable } from 'rxjs';
-import { TipoAnuncioService } from './../../../services/tipo-anuncio.service';
-import { AnuncioService } from './../../../services/anuncio.service';
+import { Anuncio } from './../../../models/anuncio.model';
 import { Component, OnInit } from '@angular/core';
-import { tipoAnuncio } from '../../../models/tipo-anuncio.model';
-import { anuncio } from '../../../models/anuncio.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TipoAnuncio } from '../../../models/tipo-anuncio.model';
+import { Observable } from 'rxjs';
+import { TipoAnuncioService } from '../../../services/tipo-anuncio.service';
+import { AnuncioService } from '../../../services/anuncio.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Imagem } from '../../../models/imagem.model';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Constants } from '../../../utils/constants';
 
 @Component({
@@ -18,91 +17,126 @@ import { Constants } from '../../../utils/constants';
 })
 export class AnuncioCadastroComponent implements OnInit {
 
+  tipos: Observable<TipoAnuncio[]>;
   formulario: FormGroup;
-
-  tiposAnuncio: Observable<tipoAnuncio[]>;
-  anuncio: anuncio;
+  anuncio: Anuncio;
   imagem: Imagem;
+  id: any;
+  labelButton: string = "Salvar";
 
-  constructor(private router: Router,private tipoAnuncioService: TipoAnuncioService, private formBuilder: FormBuilder, private anuncioService: AnuncioService) { }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private tipoAnuncioService: TipoAnuncioService,
+    private anuncioService: AnuncioService, private activeRoute:  ActivatedRoute) { }
 
   ngOnInit() {
+    //Carregando combo tipos de anúncio
+    this.tipos = this.tipoAnuncioService.findAll();
+    this.createFormGroup();
+
+    this.activeRoute.params.subscribe(parametrosURl => {
+      console.log(parametrosURl);
+      console.log(parametrosURl['id']);
+      this.id = parametrosURl['id'];
+      if (this.id != undefined){
+        this.labelButton = "Alterar";
+        this.anuncioService.findById(this.id).subscribe(data=>{
+          //console.log(data);
+          this.anuncio = data[0];
+          this.imagem = this.anuncio.imagem;
+          console.log(this.anuncio);
+          this.updateValuesFormControl();
+        });
+      }
+
+    })
+
+  }
+
+public updateValuesFormControl(): void {
+    // this.formulario.setValue({
+    //   tipo: this.anuncio.tipo,
+    //   nome: this.anuncio.nome,
+    //   descricao: this.anuncio.descricao,
+    //   valor: this.anuncio.valor,
+    //   contato: this.anuncio.contato
+    // });
+
+    Object.keys(this.anuncio).forEach(atributo => {
+      if(this.formulario.get(atributo)){
+        this.formulario.get(atributo).setValue(this.anuncio[atributo]);
+
+      }
+    });
+
+  }
+
+  public createFormGroup(): void{
+
+
+    //Criando formulário reativo
     this.formulario = this.formBuilder.group({
+      id:[null],
       tipo: [null, Validators.required],
       nome: [null, Validators.required],
       descricao: [null, Validators.required],
       valor: [null, Validators.required],
       contato: [null, Validators.required]
-    })
-    this.tiposAnuncio = this.tipoAnuncioService.findAll();
+    });
+    //console.log(this.formulario);
+
   }
 
-  public campoValido(campo: string): boolean{
+  public campoValido(campo: string): boolean {
     let formControl = this.formulario.get(campo);
-    if(campo.toLocaleUpperCase()=="TIPO")
-    {
-      return formControl.value=="null" && (formControl.touched || formControl.dirty);
-    }
-    else{
+    if (campo.toLocaleUpperCase() == "TIPO") {
+      return formControl.value == "null" && (formControl.touched || formControl.dirty);
+    } else {
       return formControl.invalid && (formControl.touched || formControl.dirty);
     }
   }
 
-  public onSelectFile(event: any): void{
-    console.log(event);
+  public onSelectFile(event: any): void {
     if(event.target.files && event.target.files.length > 0){
       let file = event.target.files[0];
       let reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = (e: any) =>{
-          console.log(file.name, reader.result);
-          this.imagem = new Imagem(file.name, reader.result);
-
+      reader.onload = (e: any) => {
+        console.log(file.name, reader.result);
+        this.imagem = new Imagem(file.name, reader.result);
       }
-
-     }
+    }
   }
 
   public salvar(): void {
-
-
-    if(this.formulario.valid){
-      console.log(this.formulario);
-      console.log(this.formulario.value);
-      console.log(this.anuncio);
+    if (this.formulario.valid) {
 
       this.anuncio = JSON.parse(JSON.stringify(this.formulario.value));
+      //this.anuncio.id = this.id; // pq add null no created
       this.anuncio.imagem = this.imagem;
 
-      this.anuncioService.insert(this.anuncio).subscribe(resultado =>{
+      if(this.id == undefined){
+      //Inclusão de anúncios na api
+      this.anuncioService.insert(this.anuncio).subscribe(resultado => {
         this.anuncio = JSON.parse(JSON.stringify(resultado));
-        alert("Anúncio Salvo " + this.anuncio.nome); //.body.id);
+        alert("Anúncio salvo com sucesso " + this.anuncio.nome);
         this.router.navigate([Constants.PATH_CONSULTA_ANUNCIO]);
       });
     }
-    else {
-      alert("Formulário inválido, verifique os campos");
-    }
-
-    //,
-    // (err: HttpErrorResponse) => {
-    //   console.log(err);
-    //   if (err!= null){
-    //     if(err.status >= 400 && err.status <= 499 )
-    //     {
-    //       alert("Erro no cliente! Verifique API");
-    //     }
-    //     else if (err.status >= 500 && err.status <= 505 )
-    //     {
-    //       alert("Erro no lado do servidor");
-    //     }
-    //     else{
-    //       alert("Erro não identificado");
-    //     }
-    //   }
-
-    // });
+    else{
+      console.log(this.anuncio);
+      this.anuncioService.update(this.anuncio).subscribe(resultado => {
+        console.log(resultado);
+        alert("Anúncio alterado com sucesso " + this.anuncio.nome);
+        this.router.navigate([Constants.PATH_CONSULTA_ANUNCIO]);
+      });
 
     }
+
+    } else {
+      alert("Formulário inválido, verifique os campos.");
+    }
+  }
 
 }

@@ -3,10 +3,9 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-import localePt from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
-registerLocaleData(localePt, 'pt-BR');
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import {NgxMaskModule} from 'ngx-mask'
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { AnuncioConsultaComponent } from './components/anuncios/anuncio-consulta/anuncio-consulta.component';
@@ -15,10 +14,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptor';
 
-import ErrorHttpInterceptor from './utils/interceptors/error-http-interceptors';
-import { CurrencyMaskModule } from "ng2-currency-mask";
-import {NgxMaskModule} from 'ngx-mask';
+//Configurando o locale pt-BR
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
@@ -34,20 +35,22 @@ import {NgxMaskModule} from 'ngx-mask';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     CurrencyMaskModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgxPaginationModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: ErrorHttpInterceptor,
-    multi: true
-  },
-  {
-    provide: LOCALE_ID,
-    useValue: 'pt-BR'
-   }
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHttpInterceptor,
+      multi: true
+    },
+    { 
+      provide: LOCALE_ID, 
+      useValue: 'pt-BR' 
+    }
 
 ],
   bootstrap: [AppComponent]

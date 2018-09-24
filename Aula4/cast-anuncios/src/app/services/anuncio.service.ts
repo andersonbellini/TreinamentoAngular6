@@ -1,9 +1,9 @@
-import { anuncioFiltro } from './../models/anuncio-filtro.model';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { anuncio } from '../models/anuncio.model';
+import { Anuncio } from '../models/anuncio.model';
+import { environment } from '../../environments/environment';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { AnuncioFiltro } from '../models/anuncio-filtro.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,49 +13,50 @@ export class AnuncioService {
 
   private anuncioUrl: string;
 
+  //Injeção de dependência do HttpCliente para
+  //consumo de APIs rest.
   constructor(private http: HttpClient) {
     this.anuncioUrl = `${environment.apiBaseUrl}/anuncios`;
   }
 
   //Insert de anúncios com método POST
-  // public insert(anuncio: anuncio): Observable<HttpResponse<anuncio>>{
-  //   console.log("Anuncio service: " + anuncio.nome);
+  // public insert(anuncio: Anuncio): Observable<HttpResponse<Anuncio>>{
   //   let body = JSON.stringify(anuncio);
-  //   let httpReaders =
-  //        new HttpHeaders({'Content-Type': 'application/json'});
-  //   return this.http.post<anuncio>(
+  //   let httpHeaders =
+  //       new HttpHeaders({ 'Content-Type': 'application/json'});
+  //   return this.http.post<Anuncio>(
   //     this.anuncioUrl,
-  //     body, {headers: httpReaders, observe: 'response'});
+  //     body, { headers : httpHeaders, observe: 'response'
+  //     });
   // }
 
-  public insert(anuncio: anuncio): Observable<Object>{
-    console.log("Anuncio service: " + anuncio);
-    return this.http.post(this.anuncioUrl,anuncio);
+  public insert(anuncio: Anuncio): Observable<Object> {
+    return this.http.post(this.anuncioUrl, anuncio);
   }
 
-  // public listarAnuncio(anuncio: anuncio): Observable<Object>{
+  public update(anuncio: Anuncio): Observable<Object> {
+    console.log(anuncio);
+    return this.http.put<Anuncio>(this.anuncioUrl + `/${anuncio.id}`, anuncio);
+  }
 
-  //   return this.http.post(this.anuncioUrl,anuncio);
-  // }
-
-  public findbyFiltros(filtro: anuncioFiltro): Observable<anuncio[]> {
+  findByFiltros(filtro: AnuncioFiltro): Observable<Anuncio[]> {
     console.log(filtro);
-  if(filtro.tipo != "null" && filtro.nome != null){
-        return this.http.get<anuncio[]>(this.anuncioUrl + "?tipo=" + filtro.tipo +"&nome_like=" + filtro.nome);
-  } else if(filtro.tipo!="null"){
-      return this.http.get<anuncio[]>(this.anuncioUrl + "?tipo=" + filtro.tipo);
+    if (filtro.tipo != "null" && filtro.nome != null) {
+      return this.http.get<Anuncio[]>(this.anuncioUrl +
+        "?tipo=" + filtro.tipo + "&nome_like=" + filtro.nome);
+    } else if (filtro.tipo != "null") {
+      return this.http.get<Anuncio[]>(this.anuncioUrl + "?tipo=" + filtro.tipo);
+    } else {
+      return this.http.get<Anuncio[]>(this.anuncioUrl + "?nome_like=" + filtro.nome);
     }
-    else{
-      return this.http.get<anuncio[]>(this.anuncioUrl + "?nome_like=" + filtro.nome);
-    }
-
-    return null;
   }
 
-  public listarAnuncio(): Observable<anuncio[]>
-  {
-    return this.http.get<anuncio[]>(this.anuncioUrl);
+  public findAll(): Observable<Anuncio[]> {
+    return this.http.get<Anuncio[]>(this.anuncioUrl);
   }
 
+  public findById(id: number): Observable<Anuncio> {
+    return this.http.get<Anuncio>(this.anuncioUrl+"?id="+ id);
+  }
 
 }

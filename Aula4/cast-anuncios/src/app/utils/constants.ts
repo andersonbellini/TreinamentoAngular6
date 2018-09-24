@@ -1,5 +1,6 @@
-export class Constants{
-  //PATHs de Funcionalidades gerenciar anúncios
-  static readonly PATH_CONSULTA_ANUNCIO ="/anuncios";
+export class Constants {
+
+    //PATHs da funcionalidade gerenciar anúncios
+    static readonly PATH_CONSULTA_ANUNCIO = "/anuncios";
 
 }

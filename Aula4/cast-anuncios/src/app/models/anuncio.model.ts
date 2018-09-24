@@ -1,16 +1,12 @@
-import { Imagem } from './imagem.model';
-export  class anuncio {
+import { Imagem } from "./imagem.model";
 
-  constructor
-  (
-    public id: number,
-    public contato: string,
-    public descricao: string,
-    public nome: string,
-    public tipo: number,
-    public valor: string,
-    public imagem: Imagem
-    ){}
-
-
+export class Anuncio {
+    constructor(
+        public id: number, 
+        public tipo: number,
+        public nome:string,
+        public descricao: string,
+        public valor: string,
+        public contato: string,
+        public imagem: Imagem){}
 }

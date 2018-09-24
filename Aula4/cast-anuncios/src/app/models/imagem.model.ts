@@ -1,6 +1,6 @@
-export class Imagem{
-  constructor(public name: string,
-    public value: any
-    ){}
+export class Imagem {
 
+    constructor(
+        public name: string,
+        public value: any){}
 }

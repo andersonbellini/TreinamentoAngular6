@@ -1,11 +1,5 @@
-
-export class anuncioFiltro {
-
-  constructor
-  (
-    public id: number,
-    public nome: string,
-    public tipo: string,
-    ){}
-
+export class AnuncioFiltro {
+    
+    constructor(public tipo: string, public nome: string){
+    }
 }

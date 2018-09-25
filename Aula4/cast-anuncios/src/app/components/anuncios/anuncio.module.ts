@@ -1,3 +1,4 @@
+import { ConfirmaExclusaoModule } from './../../shared/confirma-exclusao/confirma-exclusao.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
@@ -17,7 +18,8 @@ import { AnuncioCadastroComponent } from './anuncio-cadastro/anuncio-cadastro.co
     FormsModule,
     CurrencyMaskModule,
     NgxMaskModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    ConfirmaExclusaoModule
   ],
   declarations: [
     AnuncioConsultaComponent,

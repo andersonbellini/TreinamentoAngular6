@@ -73,4 +73,8 @@ export class AnuncioConsultaComponent implements OnInit {
 
     //});
    }
+
+   public cancelarAnuncio(mensagem: string): void{
+      console.log(mensagem);
+   }
 }

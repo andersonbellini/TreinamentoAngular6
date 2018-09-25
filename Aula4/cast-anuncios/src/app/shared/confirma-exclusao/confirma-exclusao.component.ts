@@ -24,7 +24,7 @@ export class ConfirmaExclusaoComponent implements OnInit {
   }
 
   public cancelar() :void{
-    this.eventoModalCancelar.emit("cancelado");
+    this.eventoModalCancelar.emit("Cancelado evento do pelo modal");
   }
 
 }

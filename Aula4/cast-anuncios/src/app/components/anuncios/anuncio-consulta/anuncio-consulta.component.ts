@@ -18,7 +18,9 @@ export class AnuncioConsultaComponent implements OnInit {
   tipos: Observable<TipoAnuncio[]>;
   filtro: AnuncioFiltro;
   anuncios: Anuncio[];
-  formulario: FormGroup; 
+  formulario: FormGroup;
+  anuncioSelecionado: Anuncio;
+  exibeExclusao: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private tipoAnuncioService: TipoAnuncioService,
@@ -46,4 +48,11 @@ export class AnuncioConsultaComponent implements OnInit {
       console.log(this.anuncios);
     })
   }
+
+  public confirmaExclusao(anuncio: Anuncio): void{
+      this.anuncioSelecionado = anuncio;
+      console.log(this.anuncioSelecionado);
+      this.exibeExclusao = true;
+  }
+
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Anuncio } from './../../models/anuncio.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-confirma-exclusao',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirma-exclusao.component.css']
 })
 export class ConfirmaExclusaoComponent implements OnInit {
+
+  @Input("objetoExclusao") objetivoExclusao:Anuncio;
 
   constructor() { }
 

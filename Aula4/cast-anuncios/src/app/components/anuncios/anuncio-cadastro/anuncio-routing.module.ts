@@ -1,5 +1,6 @@
-import { AnuncioCadastroComponent } from './anuncio-cadastro/anuncio-cadastro.component';
-import { AnuncioConsultaComponent } from './anuncio-consulta/anuncio-consulta.component';
+import { AnuncioCadastroComponent } from './anuncio-cadastro.component';
+import { AnuncioConsultaComponent } from './../anuncio-consulta/anuncio-consulta.component';
+;
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

@@ -56,17 +56,21 @@ export class AnuncioConsultaComponent implements OnInit {
       this.nomeAnuncio = anuncio.nome;
       this.idAnuncio = anuncio.id;
      //console.log(this.anuncioSelecionado);
+     this.anuncioSelecionado = anuncio;
       this.exibeExclusao = true;
   }
 
    public excluirAnuncio(idExclusao : number) : void{
     console.log(idExclusao);
-    this.anuncioService.delete(idExclusao).subscribe(resultado =>{
-     console.log(resultado);
-     this.anuncioService.findAll().subscribe(resultado => {
-      this.anuncios = resultado;
-    })
+    // this.anuncioService.delete(idExclusao).subscribe(resultado =>{
+    //  console.log(resultado);
+    //  this.anuncioService.findAll().subscribe(resultado => {
+    //   this.anuncios = resultado;
+    // });
 
-    });
+    this.anuncios.splice(this.anuncios.indexOf(this.anuncioSelecionado),1);
+    alert("excluído com sucesso!!");
+
+    //});
    }
 }

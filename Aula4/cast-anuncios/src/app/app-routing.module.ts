@@ -10,15 +10,7 @@ const ROTAS: Routes = [
   //localhost:4200/
   { path: '', component: HomeComponent },
   //localhost:4200/anuncios/
-  { path: 'anuncios',
-        children: [
-            { path: '', component: AnuncioConsultaComponent },
-            //localhost:4200/anuncios/add
-            { path: 'add', component: AnuncioCadastroComponent },
-            //localhost:4200/anunciosedit//id
-            { path: 'edit/:id', component: AnuncioCadastroComponent }
-        ]
-  },
+  { path: 'anuncios', loadChildren: './components/anuncios/anuncio.module#AnuncioModule' },
   { path: '**', component: NotfoundComponent}
 
 ]

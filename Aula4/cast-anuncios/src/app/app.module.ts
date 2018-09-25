@@ -24,8 +24,6 @@ registerLocaleData(localePt, 'pt-BR');
 @NgModule({
   declarations: [
     AppComponent,
-    AnuncioConsultaComponent,
-    AnuncioCadastroComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
@@ -34,12 +32,7 @@ registerLocaleData(localePt, 'pt-BR');
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CurrencyMaskModule,
-    NgxMaskModule.forRoot(),
-    NgxPaginationModule
+    HttpClientModule
   ],
   providers: [
     {
@@ -47,9 +40,9 @@ registerLocaleData(localePt, 'pt-BR');
       useClass: ErrorHttpInterceptor,
       multi: true
     },
-    { 
-      provide: LOCALE_ID, 
-      useValue: 'pt-BR' 
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR'
     }
 
 ],

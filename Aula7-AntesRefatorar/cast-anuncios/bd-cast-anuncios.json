@@ -1,0 +1,53 @@
+{
+  "tipos": [
+    {
+      "id": 1,
+      "nome": "Veículos",
+      "descricao": "Carro, Moto e Caminhões"
+    },
+    {
+      "id": 2,
+      "nome": "Imóveis",
+      "descricao": "Casas, Apartamentos e Terrenos"
+    },
+    {
+      "id": 3,
+      "nome": "Outros",
+      "descricao": "Relógios, Celulares e Video Games"
+    }
+  ],
+  "anuncios": [
+    {
+      "id": 1,
+      "tipo": "Veículos",
+      "nome": "Anderson",
+      "descricao": "Fuscão ",
+      "valor": 199.11,
+      "contato": "03875024985"
+    },
+    {
+      "tipo": "1",
+      "nome": "Odair",
+      "descricao": "Moto Pneu furado",
+      "valor": 2800,
+      "contato": "23984729472",
+      "id": 2
+    },
+    {
+      "tipo": "2",
+      "nome": "Pedila",
+      "descricao": "Casa do pastel",
+      "valor": 10,
+      "contato": "16986546847",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "tipo": "Veículos",
+      "nome": "teste",
+      "descricao": "teste",
+      "valor": 2.35,
+      "contato": "43535345435"
+    }
+  ]
+}

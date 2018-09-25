@@ -72,5 +72,5 @@
   </div>
 </div>
 
-<app-confirma-exclusao *ngIf="exibeExclusao" [objetoExclusao]="anuncioSelecionado"></app-confirma-exclusao>
+<app-confirma-exclusao *ngIf="exibeExclusao" [textoModal]="nomeAnuncio" [idExclusao]="idAnuncio" (eventoModalExcluir)="excluirAnuncio($event)"></app-confirma-exclusao>
 

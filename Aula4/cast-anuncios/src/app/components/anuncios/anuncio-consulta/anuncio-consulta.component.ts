@@ -21,6 +21,8 @@ export class AnuncioConsultaComponent implements OnInit {
   formulario: FormGroup;
   anuncioSelecionado: Anuncio;
   exibeExclusao: boolean = false;
+  nomeAnuncio: string;
+  idAnuncio: number;
 
   constructor(private formBuilder: FormBuilder,
     private tipoAnuncioService: TipoAnuncioService,
@@ -50,9 +52,21 @@ export class AnuncioConsultaComponent implements OnInit {
   }
 
   public confirmaExclusao(anuncio: Anuncio): void{
-      this.anuncioSelecionado = anuncio;
-      console.log(this.anuncioSelecionado);
+      //this.anuncioSelecionado = anuncio;
+      this.nomeAnuncio = anuncio.nome;
+      this.idAnuncio = anuncio.id;
+     //console.log(this.anuncioSelecionado);
       this.exibeExclusao = true;
   }
 
+   public excluirAnuncio(idExclusao : number) : void{
+    console.log(idExclusao);
+    this.anuncioService.delete(idExclusao).subscribe(resultado =>{
+     console.log(resultado);
+     this.anuncioService.findAll().subscribe(resultado => {
+      this.anuncios = resultado;
+    })
+
+    });
+   }
 }

@@ -1,5 +1,5 @@
 import { Anuncio } from './../../models/anuncio.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-confirma-exclusao',
@@ -8,11 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ConfirmaExclusaoComponent implements OnInit {
 
-  @Input("objetoExclusao") objetivoExclusao:Anuncio;
+  @Input("textoModal") textoModal:string;
+  @Input("idExclusao") idExclusao:number;
+
+  @Output() eventoModalExcluir: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  public excluir() :void{
+    this.eventoModalExcluir.emit(this.idExclusao);
+  }
 }

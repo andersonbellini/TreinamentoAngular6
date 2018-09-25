@@ -9,8 +9,6 @@ import { AnuncioFiltro } from '../models/anuncio-filtro.model';
   providedIn: 'root'
 })
 export class AnuncioService {
-
-
   private anuncioUrl: string;
 
   //Injeção de dependência do HttpCliente para
@@ -37,6 +35,12 @@ export class AnuncioService {
   public update(anuncio: Anuncio): Observable<Object> {
     console.log(anuncio);
     return this.http.put<Anuncio>(this.anuncioUrl + `/${anuncio.id}`, anuncio);
+  }
+
+  public delete(idExclusao: number): Observable<Object> {
+    console.log("Id Exclusão: ",idExclusao);
+    return this.http.delete<Object>(this.anuncioUrl + `/${idExclusao}`) ;
+    // <Anuncio>(this.anuncioUrl + `/${anuncio.id}`, anuncio);
   }
 
   findByFiltros(filtro: AnuncioFiltro): Observable<Anuncio[]> {

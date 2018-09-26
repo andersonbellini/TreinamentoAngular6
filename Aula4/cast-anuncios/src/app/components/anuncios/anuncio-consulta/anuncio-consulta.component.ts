@@ -62,7 +62,8 @@ export class AnuncioConsultaComponent implements OnInit {
      this.anuncioSelecionado = anuncio;
       this.exibeExclusao = true;
 
-      console.log(this.modalExclusao);
+      //@viewChild do componente exclusão
+      //console.log(this.modalExclusao);
   }
 
    public excluirAnuncio(idExclusao : number) : void{

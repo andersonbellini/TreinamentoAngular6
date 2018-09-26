@@ -1,0 +1,9 @@
+<div class="card" id="{{anuncio.id}}">
+  <img class="card-img-top" *ngIf="anuncio.imagem != null" [src]="anuncio.imagem.value" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{anuncio.nome}}</h5>
+    <p class="card-text">{{anuncio.descricao}}}</p>
+    <p class="card-text">Valor {{anuncio.valor}}</p>
+    <p class="card-text">Contato {{anuncio.contato}}</p>
+  </div>
+</div>

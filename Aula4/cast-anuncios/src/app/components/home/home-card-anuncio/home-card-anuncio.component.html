@@ -2,8 +2,8 @@
   <img class="card-img-top" *ngIf="anuncio.imagem != null" [src]="anuncio.imagem.value" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{anuncio.nome}}</h5>
-    <p class="card-text">{{anuncio.descricao}}}</p>
-    <p class="card-text">Valor {{anuncio.valor}}</p>
-    <p class="card-text">Contato {{anuncio.contato}}</p>
+    <p class="card-text">{{anuncio.descricao}}</p>
+    <p class="card-text">Valor {{anuncio.valor | currency: 'BRL': true:'2.2-4' }}</p>
+    <p class="card-text">Contato {{anuncio.contato | telefone}}</p>
   </div>
 </div>

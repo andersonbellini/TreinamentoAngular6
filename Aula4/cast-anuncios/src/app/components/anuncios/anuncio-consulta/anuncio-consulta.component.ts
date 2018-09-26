@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ConfirmaExclusaoComponent } from './../../../shared/confirma-exclusao/confirma-exclusao.component';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TipoAnuncioService } from '../../../services/tipo-anuncio.service';
 import { TipoAnuncio } from '../../../models/tipo-anuncio.model';
 import { Observable } from 'rxjs';
@@ -23,6 +24,8 @@ export class AnuncioConsultaComponent implements OnInit {
   exibeExclusao: boolean = false;
   nomeAnuncio: string;
   idAnuncio: number;
+
+  @ViewChild('componenteExclusao') modalExclusao: ConfirmaExclusaoComponent;
 
   constructor(private formBuilder: FormBuilder,
     private tipoAnuncioService: TipoAnuncioService,
@@ -58,6 +61,8 @@ export class AnuncioConsultaComponent implements OnInit {
      //console.log(this.anuncioSelecionado);
      this.anuncioSelecionado = anuncio;
       this.exibeExclusao = true;
+
+      console.log(this.modalExclusao);
   }
 
    public excluirAnuncio(idExclusao : number) : void{

@@ -1,4 +1,5 @@
 import { ConfirmaExclusaoComponent } from './../../../shared/confirma-exclusao/confirma-exclusao.component';
+
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TipoAnuncioService } from '../../../services/tipo-anuncio.service';
 import { TipoAnuncio } from '../../../models/tipo-anuncio.model';
@@ -22,6 +23,7 @@ export class AnuncioConsultaComponent implements OnInit {
   formulario: FormGroup;
   anuncioSelecionado: Anuncio;
   exibeExclusao: boolean = false;
+  exibeVisualizar: boolean = false;
   nomeAnuncio: string;
   idAnuncio: number;
 

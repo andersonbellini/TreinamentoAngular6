@@ -15,6 +15,7 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { HomeCardAnuncioComponent } from './components/home/home-card-anuncio/home-card-anuncio.component';
 import { TelefonePipe } from './utils/telefone.pipe';
+;
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
@@ -25,7 +26,7 @@ registerLocaleData(localePt, 'pt-BR');
     HomeComponent,
     NotfoundComponent,
     HomeCardAnuncioComponent,
-    TelefonePipe
+    TelefonePipe,
 
   ],
   imports: [

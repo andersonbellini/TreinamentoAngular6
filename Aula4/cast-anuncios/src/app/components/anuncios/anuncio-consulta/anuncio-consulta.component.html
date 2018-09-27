@@ -72,11 +72,11 @@
   </div>
 </div>
 
-<app-confirma-exclusao *ngIf="exibeExclusao"
+<app-confirma-exclusao 
+*ngIf="exibeExclusao"
 [textoModal]="nomeAnuncio"
 [idExclusao]="idAnuncio"
 (eventoModalExcluir)="excluirAnuncio($event)"
 (eventoModalCancelar)="cancelarAnuncio($event)"
 #componenteExclusao
 ></app-confirma-exclusao>
-

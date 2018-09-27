@@ -6,4 +6,7 @@
     <p class="card-text">Valor {{anuncio.valor | currency: 'BRL': true:'2.2-4' }}</p>
     <p class="card-text">Contato {{anuncio.contato | telefone}}</p>
   </div>
+  <button type="submit" class="btn btn-secundary" [routerLink]="['anuncios/view', anuncio.id]"><i class="fa fa-eye"></i>&nbsp;Visualizar</button>
 </div>
+
+

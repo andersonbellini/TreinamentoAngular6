@@ -1,0 +1,17 @@
+ <div class="container" style="width:600px; text-align: center;">
+    <h3>Detalhes do item</h3>
+    <div class="card" style="width:600px; text-align: center;" id="view{{anuncio.id}}">
+      <div>
+          <br>          
+        <img class="card-img-top" *ngIf="anuncio.imagem != null" [src]="anuncio.imagem.value" alt="Card image cap view" style="width:90%; border-radius: 15px" >
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">{{anuncio.nome}}</h4>
+        <p class="card-text">{{anuncio.descricao}}</p>
+        <p class="card-text">Valor {{anuncio.valor | currency: 'BRL': true:'2.2-4' }}</p>
+        <p class="card-text">Contato {{anuncio.contato}}</p>
+      </div>
+      <a href="#" class="btn btn-primary" routerLink="/anuncios">Voltar</a>
+    </div>
+    <br> <br>
+ </div>

@@ -53,7 +53,7 @@
                   <td>{{ anuncio.nome }}</td>
                   <td>{{ anuncio.valor | currency: 'BRL': true:'2.2-4' }}</td>
                   <td class="center">
-                    <button type="submit" class="btn btn-secundary"><i class="fa fa-eye"></i>&nbsp;Visualizar</button>
+                    <button type="submit" class="btn btn-secundary" [routerLink]="['view', anuncio.id]"><i class="fa fa-eye"></i>&nbsp;Visualizar</button>
                     &nbsp;
                     <button type="submit" class="btn btn-primary" [routerLink]="['edit', anuncio.id]"><i class="fa fa-edit"></i>&nbsp;Alterar</button>
                     &nbsp;

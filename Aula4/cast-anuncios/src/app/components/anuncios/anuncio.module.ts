@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { AnuncioRoutingModule } from './anuncio-routing.module';
 import { AnuncioConsultaComponent } from './anuncio-consulta/anuncio-consulta.component';
 import { AnuncioCadastroComponent } from './anuncio-cadastro/anuncio-cadastro.component';
+import { AnuncioVisualizarComponent } from './anuncio-visualizar/anuncio-visualizar.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { AnuncioCadastroComponent } from './anuncio-cadastro/anuncio-cadastro.co
   ],
   declarations: [
     AnuncioConsultaComponent,
-    AnuncioCadastroComponent
+    AnuncioCadastroComponent,
+    AnuncioVisualizarComponent
   ]
 })
 export class AnuncioModule { }

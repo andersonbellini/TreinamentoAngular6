@@ -1,3 +1,4 @@
+import { AnuncioVisualizarComponent } from './anuncio-visualizar/anuncio-visualizar.component';
 import { AnuncioCadastroComponent } from './anuncio-cadastro/anuncio-cadastro.component';
 import { AnuncioConsultaComponent } from './anuncio-consulta/anuncio-consulta.component';
 
@@ -10,9 +11,12 @@ const routes: Routes = [
               { path: '', component: AnuncioConsultaComponent },
               //localhost:4200/anuncios/add
               { path: 'add', component: AnuncioCadastroComponent },
-              //localhost:4200/anunciosedit//id
-              { path: 'edit/:id', component: AnuncioCadastroComponent }
+              //localhost:4200/anuncios/edit//id
+              { path: 'edit/:id', component: AnuncioCadastroComponent },
+              //localhost:4200/anuncios/view//id
+              { path: 'view/:id', component: AnuncioVisualizarComponent } // alterar aqui para o component novo
           ]
+
     }
   ];
 

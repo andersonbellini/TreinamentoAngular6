@@ -1,26 +1,27 @@
 <div class="container" style="width:600px; text-align: center;">
-    <div style="text-align: left;">
-      <br> 
+    <div style="text-align: left; padding-bottom: 10px; padding-top: 10px;">
       <a href="#" class="btn btn-primary" routerLink="/anuncios">Voltar</a>
     </div>
-    <h3>Detalhes do item</h3>
-    <div class="card" style="width:600px; text-align: center;" id="view{{anuncio.id}}">            
+
+    <!-- <h3>Detalhes do item</h3> -->
+    <div class="card" style="width:600px; text-align: center;" id="view{{anuncio.id}}">
       <div>
-          <br>          
-          <!-- <img class="card-img-top" 
-          *ngIf="anuncio.imagem != null" 
-          [src]="anuncio.imagem.value" 
-          alt="Card image cap view" 
+          <br>
+          <!-- <img class="card-img-top"
+          *ngIf="anuncio.imagem != null"
+          [src]="anuncio.imagem.value"
+          alt="Card image cap view"
           style="width:90%; border-radius: 15px;" /> -->
           <img class="card-img-top" *ngIf="anuncio.imagem != null" [src]="anuncio.imagem.value" alt="Card image cap view" style="width:90%; border-radius: 15px" >
       </div>
 
-      <div class="card-body">
+      <div class="card-body" style="text-align: left;">
         <h4 class="card-title">{{anuncio.nome}}</h4>
-        <p class="card-text">{{anuncio.descricao}}</p>
-        <p class="card-text">Valor {{anuncio.valor | currency: 'BRL': true:'2.2-4' }}</p>
-        <p class="card-text">Contato {{anuncio.contato}}</p>
-      </div> 
+        <p class="card-text">Tipo: {{anuncio.tipo}}</p>
+        <p class="card-text">Descrição: {{anuncio.descricao}}</p>
+        <p class="card-text">Valor: {{anuncio.valor | currency: 'BRL': true:'2.2-4' }}</p>
+        <p class="card-text">Contato: {{anuncio.contato}}</p>
+      </div>
     </div>
     <br> <br>
  </div>

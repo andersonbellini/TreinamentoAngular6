@@ -25,6 +25,8 @@ export class AnuncioCadastroComponent implements OnInit {
   id: any;
   labelButton: string = "Salvar";
 
+  destaque: boolean = false;
+
   @ViewChild('inputFile') componenteImagem: ElementRef;
 
   constructor(
@@ -77,7 +79,8 @@ export class AnuncioCadastroComponent implements OnInit {
       nome: [null, Validators.required],
       descricao: [null, Validators.required],
       valor: [null, Validators.required],
-      contato: [null, Validators.required]
+      contato: [null, Validators.required],
+      destaque: [null, Validators.required]
     });
   }
 

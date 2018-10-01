@@ -4,14 +4,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const ROTAS_HOME: Routes = [
-  
+
   //localhost:4200/
-  { path: '', 
-      children: [ 
+  { path: '',
+      children: [
         { path: '', component: HomeComponent },
-        //localhost:4200/home/detalhe
+        //localhost:4200/view
         { path: 'view/:id', component: HomeDetalheAnuncioComponent }
-    ] 
+    ]
   }
 ]
 
@@ -20,3 +20,5 @@ const ROTAS_HOME: Routes = [
   exports: [RouterModule]
 })
 export class HomeRoutingModule { }
+
+//ng g pipe truncate-texto --flat --spec=false

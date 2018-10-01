@@ -1,4 +1,4 @@
-<div class="card" id="anuncio1" [ngClass]="{'cardHoverDestaque' : anuncio.destaque}" >
+<div class="card" id="anuncio1" [ngClass]="{'cardHoverDestaque' : anuncio?.destaque, 'cardHover': !anuncio.destaque}" >
     <img class="card-img-top" [src]="imagem" style="height: 200px;" alt="Card image cap">
     <div class="card-body">
       <a  [routerLink]="['view', anuncio.id]">

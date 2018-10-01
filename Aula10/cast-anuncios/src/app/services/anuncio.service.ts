@@ -21,13 +21,13 @@ export class AnuncioService {
   //Insert de anúncios com método POST
   // public insert(anuncio: Anuncio): Observable<HttpResponse<Anuncio>>{
   //   let body = JSON.stringify(anuncio);
-  //   let httpHeaders = 
+  //   let httpHeaders =
   //       new HttpHeaders({ 'Content-Type': 'application/json'});
   //   return this.http.post<Anuncio>(
-  //     this.anuncioUrl, 
+  //     this.anuncioUrl,
   //     body, { headers : httpHeaders, observe: 'response'
-  //     });    
-  // } 
+  //     });
+  // }
 
   public insert(anuncio: Anuncio): Observable<Object> {
     return this.http.post(this.anuncioUrl, anuncio);
@@ -61,4 +61,9 @@ export class AnuncioService {
   public findById(id: number): Observable<Anuncio> {
     return this.http.get<Anuncio>(this.anuncioUrl + "?id=" + id);
   }
+
+  public findbyNome(texto: string): any {
+    return this.http.get<Anuncio[]>(this.anuncioUrl + "?nome_like=" + texto);
+  }
+
 }

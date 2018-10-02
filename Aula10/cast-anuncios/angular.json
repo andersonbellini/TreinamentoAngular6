@@ -46,7 +46,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputPath": "dist_prod/cast-anuncios",
+              // "outputPath": "dist_prod/cast-anuncios",
+              "outputPath": "docs",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,

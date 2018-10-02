@@ -12,7 +12,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  private anuncios: Observable<Anuncio[]>;
+  public anuncios: Observable<Anuncio[]>;
   private subjectPequisa: Subject<string> = new Subject<string>();
 
   constructor(private anuncioService: AnuncioService) { }

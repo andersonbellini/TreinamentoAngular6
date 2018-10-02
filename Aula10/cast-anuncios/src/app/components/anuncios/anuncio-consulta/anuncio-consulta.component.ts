@@ -19,8 +19,8 @@ export class AnuncioConsultaComponent implements OnInit {
   tipos: Observable<TipoAnuncio[]>;
   filtro: AnuncioFiltro;
   anuncios: Anuncio[];
-  formulario: FormGroup; 
-  
+  formulario: FormGroup;
+
   //Atributos para modal de exclusão
   nomeAnuncio: string;
   idAnuncio: number;
@@ -30,6 +30,9 @@ export class AnuncioConsultaComponent implements OnInit {
   anuncioSelecionado: Anuncio;
 
   @ViewChild(ConfirmaExclusaoComponent) componenteExclusao: ConfirmaExclusaoComponent;
+
+  p: number = 1;
+
 
   constructor(private formBuilder: FormBuilder,
     private tipoAnuncioService: TipoAnuncioService,
